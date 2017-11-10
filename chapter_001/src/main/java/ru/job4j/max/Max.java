@@ -12,14 +12,16 @@ package ru.job4j.max;
 
 	public class Max {
 
-		public int max(int first, int second) {
-			if (first > second) {
-				return first;
-			} 
-			if (first == second) {
-				return 0;
-			} else {
-				return second;
-			}
-		}
-	}
+    public int max(int first, int second) {
+        int maximumValue = first;
+        if (first > second) {
+            maximumValue = first;
+        }
+        if (first == second) {
+            maximumValue = 0;
+        } else {
+            maximumValue = second;
+        }
+        return maximumValue;
+    }
+}
