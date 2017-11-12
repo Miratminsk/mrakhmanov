@@ -23,7 +23,7 @@ import static org.junit.Assert.assertThat;
 	@Test
 	public void whenValuesAreEqual() {
 	Max maxim = new Max();
-	int result = maxim.max(4, 4);
-	assertThat(result, is(0));
+	int result = maxim.max(2, 1);
+	assertThat(result, is(2));
 	}
 }
