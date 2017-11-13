@@ -18,7 +18,7 @@ public class Point {
     }
 
     public boolean is(int a, int b) {
-        if (x == a * x + b) {
+        if ((x == a * x + b) || (y == a * x + b)) {
             return true;
         }
             return false;
