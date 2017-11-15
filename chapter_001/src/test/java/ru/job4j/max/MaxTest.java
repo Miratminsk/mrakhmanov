@@ -15,15 +15,15 @@ import static org.junit.Assert.assertThat;
 	public class MaxTest {
 	
 	@Test
-	public void whenFirstLessSecond() {
+	public void whenThirdIsMaxValue() {
 	Max maxim = new Max();
-	int result = maxim.max(1, 2);
-	assertThat(result, is(2));
+	int result = maxim.max(1, 2, 3);
+	assertThat(result, is(3));
 	}
 	@Test
-	public void whenValuesAreEqual() {
+	public void whenFirsIsMaxValue() {
 	Max maxim = new Max();
-	int result = maxim.max(2, 1);
-	assertThat(result, is(2));
+	int result = maxim.max(6, 5, 4);
+	assertThat(result, is(6));
 	}
 }
