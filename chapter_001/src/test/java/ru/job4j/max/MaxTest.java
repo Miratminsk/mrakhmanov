@@ -16,14 +16,20 @@ import static org.junit.Assert.assertThat;
 	
 	@Test
 	public void whenThirdIsMaxValue() {
-	Max maxim = new Max();
-	int result = maxim.max(1, 2, 3);
-	assertThat(result, is(3));
+	    Max maxim = new Max();
+	    int result = maxim.max(1, 2, 3);
+	    assertThat(result, is(3));
 	}
 	@Test
 	public void whenFirsIsMaxValue() {
-	Max maxim = new Max();
-	int result = maxim.max(6, 5, 4);
-	assertThat(result, is(6));
+	    Max maxim = new Max();
+	    int result = maxim.max(6, 5, 4);
+	    assertThat(result, is(6));
+	}
+	@Test
+	public void whenSecondIsMaxValue() {
+	    Max maxim = new Max();
+	    int result = maxim.max(7, 9, 8);
+		assertThat(result, is(9));
 	}
 }
