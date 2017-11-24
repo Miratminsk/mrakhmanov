@@ -1,0 +1,51 @@
+package ru.job4j.loop;
+
+import org.junit.Test;
+
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
+
+/**
+ * Test
+ * @author     Mirat Rakhmanov
+ * @since      24.11.2017
+ * @version    1.0
+ */
+
+public class PaintTest {
+
+   @Test
+    public void whenPiramidWithHeightTwoThenStringWithTwoRows() {
+        Paint paint = new Paint();
+        String result = paint.piramid(2);
+        final String line = System.getProperty("line.separator");
+        String expected = String.format(" ^ %s^^^%s", line, line);
+        assertThat(result, is(expected));
+    }
+
+    @Test
+    public void whenPiramidWithHeightThreeThenStringWithThreeRows() {
+        Paint paint = new Paint();
+        String result = paint.piramid(3);
+        final String line = System.getProperty("line.separator");
+        String expected = String.format("  ^  %s ^^^ %s^^^^^%s", line, line, line);
+        assertThat(result, is(expected));
+    }
+    @Test
+    public void whenPiramidWithHeightFourThenStringWithSevenRows() {
+        Paint paint = new Paint();
+        String result = paint.piramid(4);
+        final String line = System.getProperty("line.separator");
+        String expected = String.format("   ^   %s  ^^^  %s ^^^^^ %s^^^^^^^%s", line, line, line, line);
+        assertThat(result, is(expected));
+    }
+    @Test
+    public void whenPiramidWithHeightFiveThenStringWithNineRows() {
+        Paint paint = new Paint();
+        String result = paint.piramid(5);
+        final String line = System.getProperty("line.separator");
+        String expected = String.format("    ^    %s   ^^^   %s  ^^^^^  %s ^^^^^^^ %s^^^^^^^^^%s", line, line, line, line, line);
+        assertThat(result, is(expected));
+    }
+
+}
