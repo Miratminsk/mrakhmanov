@@ -3,7 +3,7 @@ package ru.job4j.examone;
 /**
  * Class для проверяющий, что словo находится в другом слове
  * @author     Mirat Rakhmanov
- * @since      14.12.2017
+ * @since      19.12.2017
  * @version    1.0
  * Method contains проверяет, что словo находится в другом слове
  * @param String origin, String sub
@@ -17,6 +17,7 @@ public class ExamOne {
         char[] charSub = sub.toCharArray();
         char[] charResult = new char[charSub.length];
         int b = 0;
+        boolean result = false;
         for (int a = 0; a < charOrigin.length; a++) {
             if (charSub[b] == charOrigin[a]) {
                 charResult[b] = charSub[b];
@@ -26,10 +27,10 @@ public class ExamOne {
                 String s1 = new String(charSub);
                 String s2 = new String(charResult);
                 if (s1.equals(s2)) {
-                    return true;
+                    result = true;
                 }
             }
         }
-        return false;
+        return result;
     }
 }
