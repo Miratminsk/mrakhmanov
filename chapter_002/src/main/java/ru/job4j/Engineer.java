@@ -10,9 +10,9 @@ package ru.job4j;
  */
 
 public class Engineer extends Professions {
-    public int licenseNo;
+    private int licenseNo;
+    private String engineerName;
     public String inspects;
-    public String engineerName;
 
     public Engineer(int age, char gender, String education, int licenseNo, String name, String engineerName) {
         super(age, gender, education, name);

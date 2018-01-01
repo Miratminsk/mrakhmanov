@@ -10,10 +10,10 @@ package ru.job4j;
  */
 
 public class Professions {
-    public int age;
-    public char gender;
-    public String education;
-    public String name;
+    private int age;
+    private char gender;
+    private String education;
+    private String name;
 
     public Professions(int age, char gender, String education, String name) {
         this.age = age;
@@ -32,6 +32,7 @@ public class Professions {
     public String getEducation() {
         return this.education;
     }
+
     public String getName() {
         return this.name;
     }

@@ -10,9 +10,9 @@ package ru.job4j;
  */
 
 public class Doctor extends Professions {
-    public String job;
+    private String job;
+    private String doctorName;
     public String treat;
-    public String doctorName;
 
     public Doctor(int age, char gender, String education, String job, String name, String doctorName) {
         super(age, gender, education, name);

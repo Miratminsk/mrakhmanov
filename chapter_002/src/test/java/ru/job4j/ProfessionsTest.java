@@ -16,7 +16,7 @@ public class ProfessionsTest {
 
 
     @Test
-    public void whetTestDoctor() {
+    public void whenTestDoctor() {
         Doctor doctor = new Doctor(30, 'M', "BSU", "Chicago Hospital", "Mirat", "Alex");
         String resultArrayOne = doctor.getJob();
         char resultArrayTwo = doctor.getGender();
@@ -38,7 +38,7 @@ public class ProfessionsTest {
         assertThat(resultArraySix, is(expectArraySix));
     }
     @Test
-    public void whetTestEngineer() {
+    public void whenTestEngineer() {
         Engineer engineer = new Engineer(50, 'W', "MSU", 159357, "Mary", "Bob");
         int resultArrayOne = engineer.getLicenseNo();
         char resultArrayTwo = engineer.getGender();
@@ -60,7 +60,7 @@ public class ProfessionsTest {
         assertThat(resultArraySix, is(expectArraySix));
     }
     @Test
-    public void whetTestTeacher() {
+    public void whenTestTeacher() {
         Teacher teacher = new Teacher(40, 'M', "ISU", "Hight", "Anna", "Phil");
         String resultArrayOne = teacher.getExperience();
         char resultArrayTwo = teacher.getGender();
