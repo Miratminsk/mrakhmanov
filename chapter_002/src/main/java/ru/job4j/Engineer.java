@@ -20,14 +20,14 @@ public class Engineer extends Professions {
         this.engineerName = engineerName;
         this.inspects = null;
     }
-    public int getLicenseNo() {
+    public int getLicenseNo(Engineer engineer) {
         return this.licenseNo;
     }
 
-    public String getEngineerName() {
+    public String getEngineerName(Engineer engineer) {
         return this.engineerName;
     }
-    public String getScold() {
+    public String getInspects(Engineer engineer) {
         String resultName = super.getName();
         String resultEngineer = this.engineerName;
         return resultEngineer + " " + "inspects" + " " + resultName;

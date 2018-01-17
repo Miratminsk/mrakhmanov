@@ -20,14 +20,14 @@ public class Teacher extends Professions {
         this.teacherName = teacherName;
         this.teaches = null;
     }
-    public String getExperience() {
+    public String getExperience(Teacher teacher) {
         return this.experience;
     }
 
-    public String getTeacherName() {
+    public String getTeacherName(Teacher teacher) {
         return this.teacherName;
     }
-    public String getTeaches() {
+    public String getTeaches(Teacher teacher) {
         String resultName = super.getName();
         String resultTeacher = this.teacherName;
         return resultTeacher + " " + "teaches" + " " + resultName;

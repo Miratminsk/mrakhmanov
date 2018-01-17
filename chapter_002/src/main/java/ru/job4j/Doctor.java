@@ -20,14 +20,14 @@ public class Doctor extends Professions {
         this.doctorName = doctorName;
         this.treat = null;
     }
-    public String getJob() {
+    public String getJob(Doctor doctor) {
         return this.job;
     }
 
-    public String getDoctorName() {
+    public String getDoctorName(Doctor doctor) {
         return this.doctorName;
     }
-    public String treat() {
+    public String treat(Doctor doctor) {
         String resultName = super.getName();
         String resultDoctor = this.doctorName;
         return resultDoctor + " " + "treats" + " " + resultName;

@@ -18,12 +18,12 @@ public class ProfessionsTest {
     @Test
     public void whenTestDoctor() {
         Doctor doctor = new Doctor(30, 'M', "BSU", "Chicago Hospital", "Mirat", "Alex");
-        String resultArrayOne = doctor.getJob();
+        String resultArrayOne = doctor.getJob(doctor);
         char resultArrayTwo = doctor.getGender();
         String resultArrayThree = doctor.getEducation();
         int resultArrayFour = doctor.getAge();
-        String resultArrayFive = doctor.treat();
-        String resultArraySix = doctor.getDoctorName();
+        String resultArrayFive = doctor.treat(doctor);
+        String resultArraySix = doctor.getDoctorName(doctor);
         String expectArrayOne = "Chicago Hospital";
         char expectArrayTwo = 'M';
         String expectArrayThree = "BSU";
@@ -40,12 +40,12 @@ public class ProfessionsTest {
     @Test
     public void whenTestEngineer() {
         Engineer engineer = new Engineer(50, 'W', "MSU", 159357, "Mary", "Bob");
-        int resultArrayOne = engineer.getLicenseNo();
+        int resultArrayOne = engineer.getLicenseNo(engineer);
         char resultArrayTwo = engineer.getGender();
         String resultArrayThree = engineer.getEducation();
         int resultArrayFour = engineer.getAge();
-        String resultArrayFive = engineer.getScold();
-        String resultArraySix = engineer.getEngineerName();
+        String resultArrayFive = engineer.getInspects(engineer);
+        String resultArraySix = engineer.getEngineerName(engineer);
         int expectArrayOne = 159357;
         char expectArrayTwo = 'W';
         String expectArrayThree = "MSU";
@@ -62,12 +62,12 @@ public class ProfessionsTest {
     @Test
     public void whenTestTeacher() {
         Teacher teacher = new Teacher(40, 'M', "ISU", "Hight", "Anna", "Phil");
-        String resultArrayOne = teacher.getExperience();
+        String resultArrayOne = teacher.getExperience(teacher);
         char resultArrayTwo = teacher.getGender();
         String resultArrayThree = teacher.getEducation();
         int resultArrayFour = teacher.getAge();
-        String resultArrayFive = teacher.getTeaches();
-        String resultArraySix = teacher.getTeacherName();
+        String resultArrayFive = teacher.getTeaches(teacher);
+        String resultArraySix = teacher.getTeacherName(teacher);
         String expectArrayOne = "Hight";
         char expectArrayTwo = 'M';
         String expectArrayThree = "ISU";
