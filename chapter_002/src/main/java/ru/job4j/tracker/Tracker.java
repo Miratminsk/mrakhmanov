@@ -8,13 +8,13 @@ import java.util.*;
  * Класс для реализации Tracker в коде
  * @param       Item[] items, int position, Random, String id, Item item, String key
  * @author      Mirat Rakhmanov
- * @since       18.01.2018
+ * @since       23.01.2018
  * @version     1.0
  * @return      добавление заявок - public Item add(Item item), редактирование заявок - public void replace(String id, Item item), удаление заявок - public void delete(String id), получение списка всех заявок - public Item[] findAll(), получение списка по имени - public Item[] findByName(String key), получение заявки по id - public Item findById(String id);
  */
 
 public class Tracker {
-    private Item[] items = new Item[10];
+    public Item[] items = new Item[10];
     private int position = 0;
     private static final Random RN = new Random();
 
@@ -26,7 +26,12 @@ public class Tracker {
 
     public void replace(String id, Item item) {
         item.setId(this.generateId());
-        this.items[id.indexOf(id)] = item;
+        for (int a = 0; a <= items.length; a++) {
+            if (items[a].getId().equals(id)) {
+                items[a] = item;
+                break;
+            }
+        }
     }
 
     public void delete(String id) {
@@ -65,7 +70,7 @@ public class Tracker {
         final String result = this.findById(key).getName();
         int x = 0;
         for (int a = 0; a < items.length - 1; a++) {
-            if (newItems[a] != null && !newItems[a].getId().equals(key) && newItems[a].getName().equals(result)) {
+            if (newItems[a] != null && !newItems[a].getId().equals(key) && newItems[a].getName().equalsIgnoreCase(result)) {
                 resItems[x] = newItems[a];
                 x++;
             }
