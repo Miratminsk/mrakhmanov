@@ -13,7 +13,7 @@ import static org.junit.Assert.assertThat;
  * Test
  * @author     Mirat Rakhmanov
  * @since      25.01.2018
- * @version    1.0
+ * @version    2.0
  */
 
 public class StartUITest {
