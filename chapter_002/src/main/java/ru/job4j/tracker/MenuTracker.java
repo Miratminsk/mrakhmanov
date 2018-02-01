@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 class EditItem implements UserAction {
-    private static final String Y = "EXT";
+    private static final String Y = "STOP";
 
     public int keys() {
         return 2;
@@ -35,13 +35,13 @@ class EditItem implements UserAction {
     }
 
     public String info() {
-        return String.format("%s. %s", this.keys(),"Edit a application");
+        return String.format("%s. %s", this.keys(), "Edit a application");
     }
 
 }
 
 class FindByName implements UserAction {
-    private static final String Y = "EXT";
+    private static final String Y = "STOP";
 
     public int keys() {
         return 5;
@@ -65,7 +65,7 @@ class FindByName implements UserAction {
         }
     }
 
-    public String info () {
+    public String info() {
         return String.format("%s. %s", this.keys(), "Find by name.");
     }
 }
@@ -73,8 +73,8 @@ class FindByName implements UserAction {
 public class MenuTracker {
     private Input input;
     private Tracker tracker;
-    private UserAction[] actions = new UserAction[6];
-    private static final String Y = "EXT";
+    public UserAction[] actions = new UserAction[6];
+    private static final String Y = "STOP";
 
     public MenuTracker(Input input, Tracker tracker) {
         this.input = input;
@@ -89,6 +89,18 @@ public class MenuTracker {
         this.actions[4] = new MenuTracker.FindByIdItem();
         this.actions[5] = new FindByName();
     }
+
+    public int[] menuValue() {
+        int a = actions.length;
+        //int b = 0;
+        int[] range = new int[actions.length + 1];
+        for (int x = 0; x <= a; x++) {
+            range[x] = x;
+            //b++;
+        }
+        return range;
+    }
+
 
     public void select(int keys) {
         this.actions[keys].execute(this.input, this.tracker);

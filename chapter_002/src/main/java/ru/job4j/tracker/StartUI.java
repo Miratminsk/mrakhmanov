@@ -10,7 +10,6 @@ package ru.job4j.tracker;
 
 public class StartUI {
     private final Input input;
-    private final int EXT = 6;
 
     public StartUI(Input input) {
         this.input = input;
@@ -20,22 +19,15 @@ public class StartUI {
         Tracker tracker = new Tracker();
         MenuTracker menu = new MenuTracker(this.input, tracker);
         menu.fillActions();
-        boolean exit = false;
-        while (!exit) {
+        do {
             menu.show();
-            System.out.println("6. Exit.");
-            System.out.println("If you want back to the main menu, please type: EXT");
-            int keys = Integer.valueOf(input.ask("Please select: "));
-            if (keys == EXT) {
-                 exit = true;
-            } else {
-                menu.select(keys);
-            }
-        }
+            System.out.println("If you want stop action, please type; STOP");
+            menu.select(input.ask("Please select: ", menu.menuValue()));
+        } while (!"Y".equals(this.input.ask("EXIT Y/N: ")));
     }
 
     public static void main(String[] args) {
-        Input input = new ConsoleInput();
+        Input input = new ValidateInput();
         new StartUI(input).init();
     }
 
