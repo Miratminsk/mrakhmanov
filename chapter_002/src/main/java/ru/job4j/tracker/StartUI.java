@@ -1,18 +1,18 @@
 package ru.job4j.tracker;
 
 /**
- * Класс для реализации StartUI в коде
  * @author      Mirat Rakhmanov
- * @since       23.01.2018
+ * @since       03.02.2018
  * @version     1.0
- * @return      Возвращает результат обработанный в классе Tracker
  */
 
 public class StartUI {
     private final Input input;
+    final Tracker tracker;
 
-    public StartUI(Input input) {
+    public StartUI(Input input, Tracker tracker) {
         this.input = input;
+        this.tracker = tracker;
     }
 
     public void init() {
@@ -22,13 +22,12 @@ public class StartUI {
         do {
             menu.show();
             System.out.println("If you want stop action, please type; STOP");
-            menu.select(input.ask("Please select: ", menu.menuValue()));
+            menu.select(input.ask("Please select:", menu.menuValue()));
         } while (!"Y".equals(this.input.ask("EXIT Y/N: ")));
     }
 
     public static void main(String[] args) {
-        Input input = new ValidateInput();
-        new StartUI(input).init();
+       new StartUI(new ValidateInput(new ConsoleInput()), new Tracker()).init();
     }
 
 }

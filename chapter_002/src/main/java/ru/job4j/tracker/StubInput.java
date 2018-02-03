@@ -1,23 +1,36 @@
 package ru.job4j.tracker;
 
 /**
- * Класс для реализации Item в коде
- * @param       String answers, String question
  * @author      Mirat Rakhmanov
- * @since       24.01.2018
+ * @since       03.02.2018
  * @version     1.0
- * @return      String answers
  */
 
-    public class StubInput implements Input {
-        private String[] answers;
-        private int position = 0;
+public class StubInput implements Input {
+    private String[] answers;
+    private int position = 0;
 
-        public StubInput(String[] answers) {
-            this.answers = answers;
-        }
+    public StubInput(String[] answers) {
+        this.answers = answers;
+    }
 
-        public String ask(String question) {
-            return answers[position++];
+    public String ask(String question) {
+        return answers[position++];
+    }
+
+    public int ask(String question, int[] range) {
+        int keys = Integer.valueOf(this.ask(question));
+        boolean exist = false;
+        for (int value : range) {
+            if (value == keys) {
+                exist = true;
+                break;
+            }
         }
+        if (exist) {
+            return keys;
+        } else {
+            throw new MenuOutException("Out of menu range");
+        }
+    }
 }
