@@ -5,11 +5,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-class EditItem implements UserAction {
+/**
+ * @author      Mirat Rakhmanov
+ * @since       04.02.2018
+ * @version     1.0
+ */
+
+class EditItem extends BaseAction {
     private static final String Y = "STOP";
 
-    public int keys() {
-        return 2;
+    public EditItem(int keys, String name) {
+        super(keys, name);
     }
 
     public void execute(Input input, Tracker tracker) {
@@ -33,18 +39,13 @@ class EditItem implements UserAction {
             System.out.println("Application has been changed");
         }
     }
-
-    public String info() {
-        return String.format("%s. %s", this.keys(), "Edit a application");
-    }
-
 }
 
-class FindByName implements UserAction {
+class FindByName extends BaseAction {
     private static final String Y = "STOP";
 
-    public int keys() {
-        return 5;
+    public FindByName(int keys, String name) {
+        super(keys, name);
     }
 
     public void execute(Input input, Tracker tracker) {
@@ -64,10 +65,6 @@ class FindByName implements UserAction {
             }
         }
     }
-
-    public String info() {
-        return String.format("%s. %s", this.keys(), "Find by name.");
-    }
 }
 
 public class MenuTracker {
@@ -75,6 +72,10 @@ public class MenuTracker {
     private Tracker tracker;
     public UserAction[] actions = new UserAction[6];
     private static final String Y = "STOP";
+    private int position = 0;
+    private int position1 = 0;
+    private int keys = 0;
+    private String[] names = new String[]{"Create new item", "Show items", "Edit item", "Delete item", "Find by id item", "Find by name"};
 
     public MenuTracker(Input input, Tracker tracker) {
         this.input = input;
@@ -82,23 +83,21 @@ public class MenuTracker {
     }
 
     public void fillActions() {
-        this.actions[0] = this.new CreateItem();
-        this.actions[1] = new MenuTracker.ShowItem();
-        this.actions[2] = new EditItem();
-        this.actions[3] = this.new DeleteItem();
-        this.actions[4] = new MenuTracker.FindByIdItem();
-        this.actions[5] = new FindByName();
+        this.actions[position++] = this.new CreateItem(keys++, names[position1++]);
+        this.actions[position++] = this.new ShowItem(keys++, names[position1++]);
+        this.actions[position++] = new EditItem(keys++, names[position1++]);
+        this.actions[position++] = this.new DeleteItem(keys++, names[position1++]);
+        this.actions[position++] = new MenuTracker.FindByIdItem(keys++, names[position1++]);
+        this.actions[position++] = new FindByName(keys++, names[position1++]);
     }
 
     public int[] menuValue() {
         int a = actions.length;
-        //int b = 0;
-        int[] range = new int[actions.length + 1];
+        int[] rang = new int[actions.length + 1];
         for (int x = 0; x <= a; x++) {
-            range[x] = x;
-            //b++;
+            rang[x] = x;
         }
-        return range;
+        return rang;
     }
 
 
@@ -114,11 +113,13 @@ public class MenuTracker {
         }
     }
 
-    private class CreateItem implements UserAction {
-        public int keys() {
-            return 0;
+    class CreateItem extends BaseAction {
+
+        public CreateItem(int keys, String name) {
+            super(keys, name);
         }
 
+        @Override
         public void execute(Input input, Tracker tracker) {
             boolean flag = false;
             while (!flag) {
@@ -137,35 +138,31 @@ public class MenuTracker {
                 flag = true;
             }
         }
-
-        public String info() {
-            return String.format("%s. %s", this.keys(), "Create the new application");
-        }
     }
 
-    private static class ShowItem implements UserAction {
-        public int keys() {
-            return 1;
+    class ShowItem extends BaseAction {
+
+        public ShowItem(int keys, String name) {
+            super(keys, name);
         }
 
+        @Override
         public void execute(Input input, Tracker tracker) {
-                List<Item> list = new ArrayList<>(Arrays.asList(tracker.findAll()));
-                System.out.println("---------------The following applications exist in the database: -------------------");
-                for (int x = 0; x < list.size(); x++) {
-                    System.out.println(x + 1 + ". " + "ID: " + list.get(x).getId() + "," + " Name: " + list.get(x).getName() + "," + " Description: " + list.get(x).getDescription() + ".");
-                }
+            List<Item> list = new ArrayList<>(Arrays.asList(tracker.findAll()));
+            System.out.println("---------------The following applications exist in the database: -------------------");
+            for (int x = 0; x < list.size(); x++) {
+                System.out.println(x + 1 + ". " + "ID: " + list.get(x).getId() + "," + " Name: " + list.get(x).getName() + "," + " Description: " + list.get(x).getDescription() + ".");
             }
-
-        public String info() {
-            return String.format("%s. %s", this.keys(), "Show all items in database");
         }
     }
 
-    private static class FindByIdItem implements UserAction {
-        public int keys() {
-            return 4;
+    class FindByIdItem extends BaseAction {
+
+        public FindByIdItem(int keys, String name) {
+            super(keys, name);
         }
 
+        @Override
         public void execute(Input input, Tracker tracker) {
             boolean flag = false;
             while (!flag) {
@@ -181,33 +178,29 @@ public class MenuTracker {
                 flag = true;
             }
         }
-
-        public String info() {
-            return String.format("%s. %s", this.keys(), "Find By ID.");
-        }
     }
 
-    private class  DeleteItem implements UserAction {
-        public int keys() {
-            return 3;
-        }
+            class DeleteItem extends BaseAction {
 
-        public void execute(Input input, Tracker tracker) {
-            boolean flag = false;
-            while (!flag) {
-                System.out.println("---------------Delete---------------");
-                String id = input.ask("Enter the ID of the application you want to delete: ");
-                if (Y.equals(id)) {
-                    break;
+                public DeleteItem(int keys, String name) {
+                    super(keys, name);
                 }
-                tracker.delete(id);
-                System.out.println("---------------Application has been deleted---------------");
-                flag = true;
+
+                @Override
+                public void execute(Input input, Tracker tracker) {
+                    boolean flag = false;
+                    while (!flag) {
+                        System.out.println("---------------Delete---------------");
+                        String id = input.ask("Enter the ID of the application you want to delete: ");
+                        if (Y.equals(id)) {
+                            break;
+                        }
+                        tracker.delete(id);
+                        System.out.println("---------------Application has been deleted---------------");
+                        flag = true;
+                    }
+                }
             }
         }
 
-        public String info() {
-            return String.format("%s. %s", this.keys(), "Delete item.");
-        }
-    }
-}
+
