@@ -22,7 +22,7 @@ public class StartUI {
         do {
             menu.show();
             System.out.println("If you want stop action, please type; STOP");
-            menu.select(input.ask("Please select:", menu.menuValue()));
+            menu.select(input.ask("Please select: ", menu.menuValue()));
         } while (!"Y".equals(this.input.ask("EXIT Y/N: ")));
     }
 
